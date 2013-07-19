@@ -1,0 +1,41 @@
+BuyItem: 
+  -
+    - refer
+    - name: productKey,platform,deviceForm,server,channel 
+      sql: select a.productKey, a.platform, deviceForm, server, channel from SysAppInfo a 
+        join SysAppServer b ON a.productKey = b.productKey and a.platform = b.platform
+        join SysAppChannel c on a.productKey = c.productKey and a.platform = c.platform where a.productKey = '5a105e8b9d40e1329780d62ea2265d8a'
+  -
+    - range
+    - name: staType
+      start: 1
+      end: 3
+  - 
+    - range
+    - name: level
+      start: 1
+      end: 11
+  - 
+    - date
+    - name: logDay
+      start: !!str 2013-06-01
+      end: !!str 2013-08-01
+  - 
+    - custom
+    - name: buyAmount
+      expression: FLOOR(3000 + RAND() * 1000)
+  - 
+    - custom
+    - name: buyGameMoney
+      expression: FLOOR(3000 + RAND() * 1000)
+  -
+    - custom
+    - name: useAmount
+      expression: FLOOR(3000 + RAND() * 1000)
+  - 
+    - range
+    - name: items
+      start: 1
+      end: 11
+      prefix: item
+
